@@ -7,7 +7,7 @@ import InputSection from '@/components/input-section'
 import ProcessingState from '@/components/processing-state'
 import ResultsSection from '@/components/results-section'
 import PremiumModal from '@/components/premium-modal'
-import TelegramSupportButton from '@/components/telegram-support-button'
+import TelegramSupportButton from '@/components/TelegramSupportButton'
 import { ThemeProvider } from '@/components/theme-provider'
 
 export default function Home() {
