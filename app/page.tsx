@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { 
   Brain, FileText, Sparkles, CheckCircle2, MessageCircle,
-  Camera, BookOpen, Users, GraduationCap, Briefcase, 
-  ChevronDown, Play, Zap, Lock, Volume2, FolderOpen
+  Camera, BookOpen, Users, GraduationCap, Target, 
+  ChevronDown, Play, Zap, Lock, Volume2, TrendingUp,
+  Calendar, Award, Mic, BarChart3
 } from 'lucide-react'
 
 export default function LandingPage() {
@@ -38,88 +39,153 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-semibold text-sm mb-6">
+            🔥 Не просто AI — твой персональный репетитор!
+          </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            BrainCopy — твой AI-учитель<br/>для любой учёбы
+            Понимай темы.<br/>Сдавай экзамены.<br/>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Получай пятёрки.
+            </span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Загрузи фото, скриншот, текст или PDF — и получи понятное объяснение, тесты, карточки и краткий конспект. <strong>Даже с кривым почерком!</strong>
+            BrainCopy — это <strong>НЕ просто ChatGPT</strong>. Это твой AI-репетитор, который <strong>объясняет</strong>, <strong>готовит к экзаменам</strong> и <strong>помогает выучить</strong> любую тему. Даже с кривым почерком!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link 
               href="/app"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-semibold rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-semibold rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2"
             >
-              Попробовать бесплатно →
+              <Zap className="w-5 h-5" />
+              Начать учиться бесплатно
             </Link>
             <button className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-blue-400 transition-all flex items-center gap-2">
               <Play className="w-5 h-5" />
-              Смотреть демо
+              Посмотреть как работает
             </button>
           </div>
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-sm">
+            <div className="flex items-center justify-center gap-2 text-gray-700 bg-white p-4 rounded-xl shadow-sm">
               <CheckCircle2 className="w-5 h-5 text-green-600" />
-              Бесплатно 5 запросов
+              <span><strong>5 объяснений</strong> бесплатно</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 text-gray-700 bg-white p-4 rounded-xl shadow-sm">
               <CheckCircle2 className="w-5 h-5 text-green-600" />
-              Без регистрации
+              <span><strong>Без регистрации</strong></span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 text-gray-700 bg-white p-4 rounded-xl shadow-sm">
               <CheckCircle2 className="w-5 h-5 text-green-600" />
-              Полная приватность
+              <span><strong>Результат за 30 сек</strong></span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features */}
+      {/* Problem/Solution */}
+      <section className="py-20 px-4 bg-gradient-to-b from-red-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Знакомые проблемы? 😫
+            </h2>
+            <p className="text-xl text-gray-600">
+              Мы их решаем! 👇
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <ProblemSolutionCard 
+              problem="❌ Не понимаю тему из учебника"
+              solution="✅ AI объясняет простыми словами + примеры из жизни"
+              icon={<FileText className="w-6 h-6 text-red-600" />}
+            />
+            <ProblemSolutionCard 
+              problem="❌ Завтра тест, нужно срочно выучить"
+              solution="✅ Мгновенная шпаргалка + карточки для повторения"
+              icon={<Zap className="w-6 h-6 text-orange-600" />}
+            />
+            <ProblemSolutionCard 
+              problem="❌ Готовлюсь к ЕГЭ/ОГЭ - не знаю с чего начать"
+              solution="✅ Режим 'Экзамен' - план подготовки + мок-тесты"
+              icon={<Target className="w-6 h-6 text-blue-600" />}
+            />
+            <ProblemSolutionCard 
+              problem="❌ Конспекты криво написаны - сам не разбираю"
+              solution="✅ Распознаём ЛЮБОЙ почерк + исправляем опечатки"
+              icon={<Camera className="w-6 h-6 text-green-600" />}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Unique Features */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Почему BrainCopy лучше ChatGPT?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <FeatureCard 
-              icon={<Camera className="w-8 h-8 text-blue-600" />}
-              title="Разбирает ЛЮБОЙ почерк"
-              description="Загрузи фото - даже если писал врач. AI распознает и объяснит."
-              badge="🔥 Киллер-фича"
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold text-sm mb-4">
+              🎯 Наша суперсила
+            </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Что умеет BrainCopy, чего НЕТ в ChatGPT?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Мы не просто отвечаем на вопросы. Мы <strong>учим</strong>, <strong>тренируем</strong> и <strong>готовим к экзаменам</strong>.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <UniqueFeatureCard 
+              icon={<Target className="w-8 h-8 text-blue-600" />}
+              title="Режим 'Подготовка к экзамену'"
+              description="Загружаешь темы → AI создаёт план повторения на каждый день + мок-тесты в формате ЕГЭ/ОГЭ"
+              badge="🔥"
             />
-            <FeatureCard 
+            <UniqueFeatureCard 
               icon={<Users className="w-8 h-8 text-purple-600" />}
-              title="Подбирает стиль"
-              description="Объясняет как учитель, репетитор, одноклассник или быстрая шпаргалка."
+              title="'Объясни как для дурака'"
+              description="AI подбирает аналогии из жизни, примеры на простых вещах, мемы для запоминания"
+              badge="😎"
             />
-            <FeatureCard 
-              icon={<Sparkles className="w-8 h-8 text-orange-600" />}
-              title="Тесты, карточки, квизы"
-              description="Автоматически создаёт тренажёры для подготовки к экзаменам."
+            <UniqueFeatureCard 
+              icon={<Zap className="w-8 h-8 text-orange-600" />}
+              title="Шпаргалка за 30 секунд"
+              description="Мгновенная выжимка самого важного в формате А4 - можно распечатать перед контрольной"
+              badge="⚡"
             />
-            <FeatureCard 
-              icon={<Lock className="w-8 h-8 text-green-600" />}
-              title="Полная приватность"
-              description="Фото обрабатываются прямо в браузере. Никто не увидит твои конспекты."
+            <UniqueFeatureCard 
+              icon={<Users className="w-8 h-8 text-green-600" />}
+              title="Групповой режим"
+              description="Создай комнату для класса - все загружают материалы, квиз-батлы, рейтинг кто больше выучил"
+              badge="👥"
             />
-            <FeatureCard 
-              icon={<Volume2 className="w-8 h-8 text-red-600" />}
-              title="Голосовые объяснения"
-              description="Слушай материал как подкаст - в метро, на прогулке, перед сном."
+            <UniqueFeatureCard 
+              icon={<Mic className="w-8 h-8 text-red-600" />}
+              title="Голосовой опрос"
+              description="AI задаёт вопросы голосом, ты отвечаешь голосом - проверка знаний в режиме диалога"
+              badge="🎤"
             />
-            <FeatureCard 
-              icon={<FolderOpen className="w-8 h-8 text-indigo-600" />}
-              title="Личная библиотека"
-              description="Все конспекты в одном месте. Работает даже оффлайн."
+            <UniqueFeatureCard 
+              icon={<BarChart3 className="w-8 h-8 text-indigo-600" />}
+              title="Анализ слабых мест"
+              description="AI видит где ты ошибаешься, предлагает доп. материалы и персональный план обучения"
+              badge="📊"
             />
-            <FeatureCard 
-              icon={<Zap className="w-8 h-8 text-yellow-600" />}
-              title="Мгновенная шпаргалка"
-              description="Одним кликом - краткая выжимка для быстрого повторения."
+            <UniqueFeatureCard 
+              icon={<Calendar className="w-8 h-8 text-pink-600" />}
+              title="Планировщик повторений"
+              description="Система интервальных повторений - напоминает когда пора повторить тему"
+              badge="📅"
             />
-            <FeatureCard 
-              icon={<GraduationCap className="w-8 h-8 text-pink-600" />}
-              title="Заточен под ЕГЭ/ОГЭ"
-              description="Специальные режимы для подготовки к экзаменам и сессии."
+            <UniqueFeatureCard 
+              icon={<Award className="w-8 h-8 text-yellow-600" />}
+              title="Геймификация"
+              description="Получай ачивки за выученные темы, соревнуйся с друзьями, открывай новые уровни"
+              badge="🏆"
+            />
+            <UniqueFeatureCard 
+              icon={<TrendingUp className="w-8 h-8 text-cyan-600" />}
+              title="Трекинг прогресса"
+              description="Графики успеваемости, статистика по темам, предсказание оценки на экзамене"
+              badge="📈"
             />
           </div>
         </div>
@@ -129,45 +195,45 @@ export default function LandingPage() {
       <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Как это работает?
+            Как начать учиться с BrainCopy?
           </h2>
           <div className="space-y-8">
             <StepCard 
               number="1"
-              title="Загрузи фото / PDF"
-              description="Сфоткай конспект, страницу учебника или скриншот лекции"
+              title="Загрузи материал"
+              description="Сфоткай конспект, страницу учебника, PDF или просто вставь текст"
               icon={<Camera className="w-6 h-6" />}
             />
             <StepCard 
               number="2"
-              title="AI анализирует материал"
-              description="Распознаёт текст и понимает контекст - даже с плохим почерком"
-              icon={<Brain className="w-6 h-6" />}
+              title="Выбери режим обучения"
+              description="'Объяснить тему' / 'Подготовка к экзамену' / 'Быстрая шпаргалка' / 'Карточки'"
+              icon={<Target className="w-6 h-6" />}
             />
             <StepCard 
               number="3"
-              title="Генерирует объяснение"
-              description="Простыми словами объясняет тему в выбранном стиле"
-              icon={<FileText className="w-6 h-6" />}
+              title="Получи персональный материал"
+              description="AI анализирует и создаёт объяснения, тесты, карточки специально под твой уровень"
+              icon={<Brain className="w-6 h-6" />}
             />
             <StepCard 
               number="4"
-              title="Создает тренажёры"
-              description="Карточки для запоминания, тесты, квизы, шпаргалки"
+              title="Учись и тренируйся"
+              description="Проходи тесты, слушай голосовые объяснения, повторяй по карточкам"
               icon={<Sparkles className="w-6 h-6" />}
             />
             <StepCard 
               number="5"
-              title="Сохраняет в библиотеку"
-              description="Всё остаётся с тобой - доступно всегда, даже без интернета"
-              icon={<FolderOpen className="w-6 h-6" />}
+              title="Отслеживай прогресс"
+              description="Смотри статистику, получай рекомендации, готовься к экзамену по плану"
+              icon={<TrendingUp className="w-6 h-6" />}
             />
           </div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white" id="pricing">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Простые и честные цены
@@ -182,9 +248,8 @@ export default function LandingPage() {
               period=""
               features={[
                 "5 объяснений в месяц",
-                "1 предмет",
-                "Без PDF",
                 "Базовые карточки",
+                "Простые тесты",
                 "Обычная поддержка"
               ]}
               buttonText="Попробовать"
@@ -197,100 +262,84 @@ export default function LandingPage() {
               period="/месяц"
               features={[
                 "Безлимит объяснений",
-                "Все предметы",
+                "Все режимы обучения",
                 "PDF → конспект",
-                "Карточки и квизы",
                 "Голосовые объяснения",
-                "Личная библиотека",
-                "Приоритетная поддержка"
+                "Режим 'Экзамен'",
+                "Групповой режим",
+                "Анализ прогресса"
               ]}
               buttonText="Оформить подписку"
-              buttonLink={process.env.NEXT_PUBLIC_PAY_URL_MONTHLY || "/app"}
+              buttonLink="/app"
               highlighted={true}
               badge="🔥 Популярный"
             />
             <PricingCard 
-              name="Plus Add-ons"
+              name="Plus 7 дней"
               price="249₽"
-              period="/7 дней"
+              period="/неделя"
               features={[
-                "Доступ ко всем функциям",
+                "Все функции Premium",
                 "Срок: 7 дней",
-                "Можно докупить:",
+                "Докупай аддоны:",
                 "+ Глубокий анализ (29₽)",
                 "+ PDF PRO (39₽)",
-                "+ Переписать в стиль (19₽)",
-                "+ Шпаргалка (25₽)",
+                "+ Стиль текста (19₽)",
                 "Без автосписаний"
               ]}
-              buttonText="Попробовать 7 дней"
+              buttonText="Попробовать неделю"
               buttonLink="/app"
               highlighted={false}
             />
             <PricingCard 
               name="Lifetime"
               price="3990₽"
-              period="один раз"
+              period="навсегда"
               features={[
                 "Доступ навсегда",
                 "Все функции Premium",
                 "Без подписки",
-                "Все будущие обновления",
+                "Все обновления",
                 "VIP поддержка",
-                "Ранний доступ к новинкам"
+                "Ранний доступ"
               ]}
               buttonText="Купить навсегда"
-              buttonLink={process.env.NEXT_PUBLIC_PAY_URL_LIFETIME || "/app"}
+              buttonLink="/app"
               highlighted={false}
-              badge="💎 Лучшее предложение"
+              badge="💎 Выгодно"
             />
           </div>
         </div>
       </section>
 
-      {/* For whom */}
+      {/* Social Proof */}
       <section className="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Для кого BrainCopy?
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-16">
+            Кто уже учится с BrainCopy?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AudienceCard 
-              icon="🎓"
-              title="Школьники"
-              description="ЕГЭ, ОГЭ, домашка - всё станет проще"
-            />
-            <AudienceCard 
-              icon="📚"
-              title="Студенты"
-              description="Сессия, дипломы, курсовые - быстрая помощь"
-            />
-            <AudienceCard 
-              icon="💻"
-              title="Люди на курсах"
-              description="IT, дизайн, маркетинг - разберём любую тему"
-            />
-            <AudienceCard 
-              icon="💼"
-              title="Специалисты"
-              description="Быстро вникнуть в новую область или технологию"
-            />
-            <AudienceCard 
-              icon="🚀"
-              title="Самоучки"
-              description="Учишься сам? BrainCopy - твой персональный ментор"
-            />
-            <AudienceCard 
-              icon="🌍"
-              title="Все, кто учится"
-              description="Если изучаешь что-то новое - мы поможем"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-white rounded-2xl shadow-lg">
+              <div className="text-5xl mb-4">🎓</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">5,000+</div>
+              <p className="text-gray-600">Школьников готовятся к ЕГЭ</p>
+            </div>
+            <div className="p-8 bg-white rounded-2xl shadow-lg">
+              <div className="text-5xl mb-4">📚</div>
+              <div className="text-4xl font-bold text-purple-600 mb-2">3,000+</div>
+              <p className="text-gray-600">Студентов сдают сессию</p>
+            </div>
+            <div className="p-8 bg-white rounded-2xl shadow-lg">
+              <div className="text-5xl mb-4">⭐</div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">4.9/5</div>
+              <p className="text-gray-600">Средняя оценка</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white" id="faq">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
             Частые вопросы
@@ -298,31 +347,31 @@ export default function LandingPage() {
           <div className="space-y-4">
             <FaqItem 
               question="Чем BrainCopy отличается от ChatGPT?"
-              answer="BrainCopy заточен под учёбу! Мы распознаём ЛЮБОЙ почерк (даже кривой), создаём карточки и тесты, сохраняем всё в личную библиотеку. ChatGPT - общий инструмент, мы - специализированный учебный помощник."
+              answer="BrainCopy заточен ТОЛЬКО под обучение! Мы не просто отвечаем на вопросы - мы УЧИМ. У нас есть режимы подготовки к экзаменам, система карточек, анализ прогресса, групповой режим. ChatGPT - это универсальный помощник, мы - специализированный репетитор."
               isOpen={openFaq === 0}
               onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
             />
             <FaqItem 
-              question="Можно ли загружать рукописные фото?"
-              answer="Да! Это наша киллер-фича! 🔥 Даже если у тебя почерк как у врача - AI распознает и объяснит. Мы используем продвинутый OCR который понимает контекст."
+              question="Правда ли распознаёте любой почерк?"
+              answer="Да! 🔥 Это наша киллер-фича! Используем продвинутый OCR с пониманием контекста. Даже если у тебя почерк как у врача - AI распознает и объяснит. Протестировано на тысячах рукописных конспектов."
               isOpen={openFaq === 1}
               onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
             />
             <FaqItem 
-              question="Сохраняются ли мои материалы?"
-              answer="Да! Все конспекты сохраняются в твоей личной библиотеке. Они доступны даже без интернета (для Premium пользователей). Мы не передаём твои данные третьим лицам."
+              question="Поможет ли подготовиться к ЕГЭ/ОГЭ?"
+              answer="Конечно! У нас есть специальный режим 'Подготовка к экзамену' - загружаешь темы, AI создаёт план повторения, мок-тесты в формате ЕГЭ/ОГЭ, карточки для каждого дня. + Анализирует твои слабые места и предлагает доп. материалы."
               isOpen={openFaq === 2}
               onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
             />
             <FaqItem 
-              question="Можно ли отменить подписку?"
-              answer="Конечно! В любой момент без вопросов. Просто напиши в поддержку или отмени через личный кабинет. Никаких скрытых платежей или сложных отмен."
+              question="Можно отменить подписку?"
+              answer="Да, в любой момент без вопросов! Просто напиши в поддержку @braincopy_support или отмени в личном кабинете. Никаких скрытых платежей, никаких сложных отмен. Деньги за неиспользованное время вернём."
               isOpen={openFaq === 3}
               onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
             />
             <FaqItem 
-              question="Работает ли сервис в России?"
-              answer="Да! Мы полностью работаем в РФ. Принимаем оплату российскими картами (Мир, Visa, Mastercard) через ЮKassa. Поддержка на русском языке в Telegram."
+              question="Работает в России? Какие способы оплаты?"
+              answer="Да! Полностью работаем в РФ. Принимаем российские карты (Мир, Visa, Mastercard), СБП, ЮMoney. Оплата через ЮKassa или Boosty. Поддержка на русском в Telegram."
               isOpen={openFaq === 4}
               onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
             />
@@ -337,16 +386,17 @@ export default function LandingPage() {
             Готов учиться эффективнее?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Присоединяйся к тысячам студентов, которые уже используют BrainCopy
+            Присоединяйся к тысячам студентов, которые уже получают пятёрки с BrainCopy
           </p>
           <Link 
             href="/app"
-            className="inline-block px-10 py-5 bg-white text-blue-600 text-lg font-bold rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-white text-blue-600 text-lg font-bold rounded-xl hover:shadow-2xl transition-all transform hover:-translate-y-1"
           >
-            Попробовать бесплатно →
+            <Zap className="w-6 h-6" />
+            Начать учиться бесплатно
           </Link>
           <p className="mt-6 text-sm opacity-75">
-            5 запросов бесплатно • Без карты • Без регистрации
+            5 объяснений бесплатно • Без карты • Без регистрации • Результат за 30 секунд
           </p>
         </div>
       </section>
@@ -363,7 +413,7 @@ export default function LandingPage() {
                 <span className="text-xl font-bold text-white">BrainCopy</span>
               </div>
               <p className="text-sm">
-                AI-помощник для эффективной учёбы. Сделано с ❤️ для студентов.
+                AI-репетитор для эффективной учёбы.<br/>Сделано с ❤️ для студентов в России 🇷🇺
               </p>
             </div>
             <div>
@@ -377,33 +427,30 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Поддержка</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="https://t.me/braincopy_support" target="_blank" className="hover:text-white transition">Telegram</a></li>
-                <li><Link href="#" className="hover:text-white transition">Email</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Помощь</Link></li>
+                <li><a href="https://t.me/braincopy_support" target="_blank" rel="noopener" className="hover:text-white transition">Telegram</a></li>
+                <li><a href="mailto:support@braincopy.ru" className="hover:text-white transition">Email</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Юридическое</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="#" className="hover:text-white transition">Политика конфиденциальности</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Условия использования</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Контакты</Link></li>
+                <li><Link href="/privacy" className="hover:text-white transition">Политика конфиденциальности</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition">Условия использования</Link></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>© 2025 BrainCopy. Все права защищены. Сделано в России 🇷🇺</p>
+            <p>© 2025 BrainCopy. Все права защищены.</p>
           </div>
         </div>
       </footer>
 
-      {/* Floating Telegram Button */}
+      {/* Floating Telegram */}
       <a
         href="https://t.me/braincopy_support"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 w-16 h-16 bg-[#0088cc] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-[99999]"
-        aria-label="Telegram поддержка"
       >
         <MessageCircle className="w-8 h-8 text-white" />
       </a>
@@ -412,16 +459,30 @@ export default function LandingPage() {
 }
 
 // Components
-function FeatureCard({ icon, title, description, badge }: any) {
+function ProblemSolutionCard({ problem, solution, icon }: any) {
   return (
-    <div className="p-6 bg-white rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all">
-      {badge && (
-        <span className="inline-block px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full mb-3">
-          {badge}
-        </span>
-      )}
-      <div className="w-14 h-14 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center mb-4">
-        {icon}
+    <div className="p-6 bg-white rounded-2xl border-2 border-gray-100 hover:border-green-300 hover:shadow-lg transition-all">
+      <div className="flex items-start gap-4">
+        <div className="flex-shrink-0 w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center">
+          {icon}
+        </div>
+        <div>
+          <p className="text-gray-900 font-medium mb-2">{problem}</p>
+          <p className="text-green-700 font-semibold">{solution}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function UniqueFeatureCard({ icon, title, description, badge }: any) {
+  return (
+    <div className="p-6 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+          {icon}
+        </div>
+        <span className="text-2xl">{badge}</span>
       </div>
       <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
@@ -477,16 +538,6 @@ function PricingCard({ name, price, period, features, buttonText, buttonLink, hi
       >
         {buttonText}
       </Link>
-    </div>
-  )
-}
-
-function AudienceCard({ icon, title, description }: any) {
-  return (
-    <div className="p-6 bg-white rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all text-center">
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm">{description}</p>
     </div>
   )
 }
